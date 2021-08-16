@@ -1,0 +1,35 @@
+.container{
+    padding: 40px;
+}
+
+h3{
+    color: var(--darkprimary);
+}
+
+table, th, td{
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+}
+thead{
+    background-color:rgb(37, 37, 102);
+    color: whitesmoke;
+}
+th, td{
+    padding: 10px;
+}
+tr:nth-child(even){
+    background-color: whitesmoke;
+}
+tr:nth-child(odd){
+    background-color: white;
+}
+td:first-child{
+    color: grey;
+}
+td:first-child, td:last-child{
+    text-align: center;
+    column-width: 150px;
+}
+td:nth-child(3){
+    font-style:italic;
+}

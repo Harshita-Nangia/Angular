@@ -1,0 +1,34 @@
+<div class='container'>
+    <h3 *ngIf="posts?.length<=0; else postsTable">Content Finished</h3>
+    <ng-template #postsTable>
+        <table> 
+            <thead>
+                <th>Post ID</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>User ID</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts | paginate: {
+                    id: 'list-of-posts',
+                    itemsPerPage: 5,
+                    currentPage: page,
+                    totalItems: totalPosts
+                }">
+                    <td>{{post.id || "N/A"}}</td>
+                    <td>{{(post.title | titlecase) || "N/A"}}</td>
+                    <td>{{post.body || "N/A"}}</td>
+                    <td>{{post.userId || "N/A"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <pagination-controls 
+                id="list-of-posts" 
+                directionalLinks = "false"
+                [maxSize] = 5
+                (pageChange)="page = $event" 
+            ></pagination-controls>
+        </div>
+    </ng-template>
+</div>

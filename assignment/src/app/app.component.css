@@ -1,0 +1,5 @@
+.main{
+    margin: 0;
+    background-color: var(--lightsecondary);
+    min-height: 100vh;
+}

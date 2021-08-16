@@ -1,0 +1,99 @@
+<div class="container">
+
+    <form  #empForm="ngForm">
+
+        <div class="form-control" [class.invalid]="name.invalid && name.touched">
+            <label for="employeeName">Name</label>
+            <input type="text" name="employeeName" id="employeeName" #name="ngModel"
+                required
+                placeholder="Enter Your Name" [(ngModel)]="newEmployee.employeeName"
+            >
+            <span class="error">&#9888; Required field</span>
+        </div>
+        
+        <div class="form-control" [class.invalid]="email.invalid && email.touched">
+            <label for="employeeEmail">Email</label>
+            <input type="email" name="employeeEmail" id="employeeEmail" #email="ngModel"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                required
+                placeholder="Enter Valid Email" [(ngModel)]="newEmployee.employeeEmail"
+            >
+            <span class="error">&#9888; Email is invalid</span>
+        </div>
+        
+        <div class="form-control" [class.invalid]="phone.invalid && phone.touched">
+            <label for="employeePhone">Phone No.</label>
+            <input type="tel" name="employeePhone" id="employeePhone" #phone="ngModel"
+                pattern="\d{10}$"
+                required
+                placeholder="Enter Phone Number..." [(ngModel)]="newEmployee.employeePhoneNumber"
+            >
+            <span class="error">&#9888; Phone Number must have 10 digits</span>
+        </div>
+
+        <div class="form-control" [class.invalid]="dob.invalid && dob.touched">
+            <label for="employeeDob">Date of Birth</label>
+            <input type="date" name="employeeDob" id="employeeDob" #dob="ngModel"
+                required
+                [(ngModel)]="newEmployee.employeeDob"
+            >
+        </div>
+
+        <div ngModelGroup="employeeAddress">
+            
+            <label class="heading">Address</label>
+            
+            <div class="form-control" [class.invalid]="line1.invalid && line1.touched">
+                <label for="line1">Line 1</label>
+                <input type="text" name="line1" id="line1" #line1="ngModel"
+                    required
+                    placeholder="Apartment & Street Name/No." 
+                    [(ngModel)]="newEmployee.employeeAddress.line1"
+                >
+                <span class="error">&#9888; Required field</span>
+            </div>
+
+            <div class="form-control" [class.invalid]="line2.invalid && line2.touched">
+                <label for="line2">Line2</label>
+                <input type="text" name="line2" id="line2" #line2="ngModel"
+                    placeholder="Enter Area/Locality Info" 
+                    [(ngModel)]="newEmployee.employeeAddress.line2"
+                >
+            </div>
+            
+            <div class="form-control-block">
+                <div class="form-control" [class.invalid]="city.invalid && city.touched">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city" #city="ngModel"
+                        required
+                        placeholder="Enter City..."
+                        [(ngModel)]="newEmployee.employeeAddress.city"
+                    >
+                    <span class="error">&#9888; Required field</span>
+                </div>
+                <div class="form-control" [class.invalid]="state.invalid && state.touched">
+                    <label for="state">State</label>
+                    <input type="text" name="state" id="state" #state="ngModel"
+                        required
+                        placeholder="Enter State..."
+                        [(ngModel)]="newEmployee.employeeAddress.state"
+                    >
+                    <span class="error">&#9888; Required field</span>
+                </div>    
+            </div>
+            
+            <div class="form-control" [class.invalid]="pincode.invalid && pincode.touched">
+                <label for="pincode">Pincode</label>
+                <input type="text" name="pincode" id="pincode" #pincode="ngModel"
+                    pattern="\d{6}$"
+                    required
+                    placeholder="Enter Pincode..."
+                    [(ngModel)]="newEmployee.employeeAddress.pincode"
+                >
+                <span class="error">&#9888; Required field; Must be valid 6 digit pincode</span>
+            </div>
+
+            <button class="btn" (click)="log(empForm)">Log to Console</button>
+        </div>
+    </form>
+</div>
